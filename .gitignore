@@ -1,0 +1,8 @@
+# Build output
+*.pdf
+
+# Not needed to build the paper
+figs/
+bench/
+plots.py
+todo.txt

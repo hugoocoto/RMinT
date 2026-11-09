@@ -101,7 +101,7 @@ leer el elemento y compararlo con la raíz. El de la ordenación sube de 105 ns
 ($N = 10^4$) a 222 ns ($N = 10^9$), como se espera de un factor $log N$.
 
 #figure(
-  fig-time(height: 3.6cm),
+  fig-time(height: 3.2cm),
   caption: [Tiempo (mediana) frente a $N$ con entrada aleatoria, en escala
     log-log.],
 ) <fig-time>
@@ -113,7 +113,7 @@ con $K = 10^6$, donde se esperan $K (1 + ln(N slash K)) approx "7,9" dot 10^6$
 inserciones, menos del 1 % de los elementos.
 
 #figure(
-  fig-speedup(height: 3.6cm),
+  fig-speedup(height: 3.2cm),
   caption: [Aceleración del RMinT respecto a la ordenación con entrada aleatoria. La
     línea discontinua marca la igualdad.],
 ) <fig-speedup>
@@ -144,7 +144,7 @@ es más lento que la ordenación, que además es $"4,0" times$ más rápida que 
 aleatorios. Este caso no corresponde al uso previsto.
 
 #figure(
-  fig-k(height: 3.0cm),
+  fig-k(height: 2.7cm),
   caption: [Tiempo frente a $K$ con $N = 10^9$. La línea horizontal es la ordenación,
     que no depende de $K$.],
 ) <fig-k>
@@ -174,6 +174,8 @@ elementos.
 El RMinT resuelve la selección de los $K$ mayores con memoria $O(K)$ y, para
 datos aleatorios, coste prácticamente lineal en $N$. Con $N = 10^9$ tarda 0,84 s
 frente a los 222 s de la ordenación completa, y su ventaja aumenta con $N$. Solo pierde
-con entradas casi ordenadas y $K$ grande, fuera de su uso previsto. Como trabajo
-futuro, compararlo con la selección rápida @hoare1961 y combinar los $K$ mayores
-de distintos procesos con una reducción final.
+con entradas casi ordenadas y $K$ grande, fuera de su uso previsto.
+Frente al quickselect de Hoare, esperado $O(N)$ en RAM @hoare1961, RMinT
+conserva la entrada y usa estado $O(K)$ sin reordenar el vector. Si $N$ supera la
+RAM, quickselect no puede particionar directamente; RMinT procesa bloques,
+conserva $K$ valores y puede rendir bien con E/S secuencial y memoria acotada.

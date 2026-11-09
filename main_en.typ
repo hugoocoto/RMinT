@@ -167,6 +167,7 @@ global result without gathering all $N$ values.
 RMinT solves the selection of the $K$ largest elements with $O(K)$ memory and,
 for random data, a cost that is practically linear in $N$. With $N = 10^9$ it
 takes 0.84 s versus 222 s for complete sorting, and its advantage grows with $N$.
-It only loses on nearly sorted inputs with large $K$, outside its intended use.
-As future work, it should be compared with quickselect @hoare1961 and the $K$
-largest values from separate processes combined with a final reduction.
+Against Hoare's expected-$O(N)$ quickselect @hoare1961, RMinT preserves input
+and uses $O(K)$ state, avoiding full-array reordering. If $N$ exceeds RAM,
+quickselect cannot partition directly; RMinT streams chunks, retaining $K$ values
+with sequential I/O, and can remain performant. This case is unmeasured.
