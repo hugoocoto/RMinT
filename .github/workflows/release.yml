@@ -1,0 +1,35 @@
+name: Build paper
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: typst-community/setup-typst@v5.3.1
+        with:
+          typst-version: 0.15.1
+      - run: |
+          typst compile main.typ paper.pdf
+          typst compile main_en.typ paper_en.pdf
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: paper
+          path: |
+            paper.pdf
+            paper_en.pdf
+      - name: Publish release
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete latest --cleanup-tag --yes || true
+          gh release create latest paper.pdf paper_en.pdf --target "$GITHUB_SHA" \
+            --title "Latest paper" --notes "Built from $GITHUB_SHA"
