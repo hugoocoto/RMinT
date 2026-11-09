@@ -14,13 +14,6 @@
 )
 #let has(dist, n, k, method) = rows.any(r => r.dist == dist and int(r.N) == n and int(r.K) == k and r.method == method)
 
-#let rows-old = csv("data/results_old.csv", row-type: dictionary)
-#let med-old(dist, n, k, method) = median(
-  rows-old
-    .filter(r => r.dist == dist and int(r.N) == n and int(r.K) == k and r.method == method)
-    .map(r => float(r.ms)),
-)
-
 #let ns = (10000, 100000, 1000000, 10000000, 100000000, 1000000000)
 #let ks = (1, 10, 100, 1000, 10000, 100000, 1000000)
 #let nmax = ns.last()
