@@ -2,7 +2,7 @@
 #import "figs.typ": *
 
 #show: ieee.with(
-  title: [Rolling Min Tree: Max or Pass],
+  title: [Rolling Min Tree: Fixed-Size Heap Top-K Selection at Billion-Element Scale],
   abstract: [
     Many applications only need the $K$ largest elements of a vector of $N$
     values. Sorting the vector and keeping the first $K$ costs $O(N log N)$

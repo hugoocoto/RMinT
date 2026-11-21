@@ -1,4 +1,4 @@
-# Rolling Min Tree: Max or Pass
+# Rolling Min Tree: Fixed-Size Heap Top-K Selection at Billion-Element Scale
 
 The Rolling Min Tree (RMinT) finds the $K$ largest elements of a vector of $N$
 values using a fixed-capacity min-heap of size $K$. It costs $O(N \log K)$ in
@@ -25,7 +25,7 @@ typst compile main.typ paper.pdf
 ```bibtex
 @misc{cotoflorez2026rmint,
   author       = {Coto Fl{\'o}rez, Hugo and Sanchez Miguez, David},
-  title        = {{Rolling Min Tree}: Max or Pass},
+  title        = {{Rolling Min Tree}: Fixed-Size Heap {Top-K} Selection at Billion-Element Scale},
   year         = {2026},
   howpublished = {GitHub repository},
   url          = {https://github.com/hugoocoto/RMinT}

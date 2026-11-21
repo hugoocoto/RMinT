@@ -2,7 +2,7 @@
 #import "figs.typ": *
 
 #show: ieee.with(
-  title: [Rolling Min Tree: Max or Pass],
+  title: [Rolling Min Tree: selección Top-K con un montículo de tamaño fijo a escala de mil millones de elementos],
   abstract: [
     Muchas aplicaciones solo necesitan los $K$ elementos mayores de un vector de
     $N$ valores. Ordenar el vector y quedarse con los $K$ primeros cuesta
